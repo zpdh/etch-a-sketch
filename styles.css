@@ -27,10 +27,16 @@ footer {
     padding: 20px;
 }
  
+.sliderContainer {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+} 
+
   .slider {
     -webkit-appearance: none;
     appearance: none;
-    width: 30%;
+    width: 100%;
     height: 15px;
     border-radius: 5px;
     background: #d3d3d3;
@@ -62,11 +68,19 @@ footer {
     cursor: pointer;
   }
 
+  .gridContainer {
+    display: flex;
+    justify-content: center;
+    margin: 50px;
+  }
+
   #gridContent {
     display: flex;
     flex-wrap: wrap;
     max-width: 480px;
     max-height: 480px;
+    justify-content: center;
+    align-items: center;
     
   }
 
