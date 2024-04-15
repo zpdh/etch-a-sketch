@@ -18,10 +18,6 @@ const cells = document.getElementById('gridCell')
 function makeGrid() {
     makeRows()
     makeCells()
-    let allCells = document.querySelectorAll('#gridCell')
-    allCells.forEach( cell => {
-        cell.style.cssText += `width:${cellSize}px;height:${cellSize}px;`
-    })
 }
 
 function makeRows() {
@@ -35,6 +31,11 @@ function makeCells() {
         for (j = 0; j < slider.value; j++) {
         const createCell = document.createElement('div')
         gridContent.appendChild(createCell).id = 'gridCell'
+        //Defining cell size upon creation:
+        createCell.style.cssText += `width:${cellSize}px;height:${cellSize}px;`
+        //Event listeners to color grid square
+        createCell.addEventListener('mouseover', changeColor)
+        createCell.addEventListener('mousedown', changeColor)
     }}}
 
 //Clear Grid
@@ -50,6 +51,17 @@ function remakeGrid() {
     clearGrid()
     makeGrid()
 }
+
+//Change grid square color
+let mouseDown = false
+document.body.onmousedown = () => (mouseDown = true)
+document.body.onmouseup = () => (mouseDown = false)
+
+function changeColor(e) {
+if (e.type === 'mouseover' && !mouseDown) return
+else {
+        e.target.style.cssText += 'background-color:#333333;'
+}}
 
 clearBtn.addEventListener('click', () => {remakeGrid()})
 
