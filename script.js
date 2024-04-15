@@ -4,14 +4,14 @@ const slider = document.getElementById('range')
 const gridSize = document.getElementById('gridsize')
 gridSize.textContent = `Grid Size: ${slider.value}x${slider.value}`
 let thisvalue = slider.value
-let cellSize = 480 / slider.value
+let cellSize = 640 / slider.value
 slider.oninput = function() {
     thisvalue = this.value
     gridSize.textContent = `Grid Size: ${this.value}x${this.value}`
-    cellSize = 480 / thisvalue
+    cellSize = 640 / thisvalue
 }
 
-//Grid
+//Make Grid
 const gridContent = document.getElementById('gridContent')
 const rows = document.getElementsByClassName('gridRow')
 const cells = document.getElementById('gridCell')
@@ -37,6 +37,23 @@ function makeCells() {
         gridContent.appendChild(createCell).id = 'gridCell'
     }}}
 
+//Clear Grid
+const clearBtn = document.getElementById('cleargrid')
+
+function clearGrid() {
+    while (gridContent.firstChild) {
+        gridContent.removeChild(gridContent.firstChild)
+    }
+}
+
+function remakeGrid() {
+    clearGrid()
+    makeGrid()
+}
+
+clearBtn.addEventListener('click', () => {remakeGrid()})
+
 addEventListener('load', () => {makeGrid()})
+
 
 
