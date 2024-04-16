@@ -9,7 +9,9 @@ slider.oninput = function() {
     thisvalue = this.value
     gridSize.textContent = `Grid Size: ${this.value}x${this.value}`
     cellSize = 640 / thisvalue
-}
+} 
+slider.onchange = () => remakeGrid()
+
 
 //Make Grid
 const gridContent = document.getElementById('gridContent')
@@ -58,8 +60,13 @@ document.body.onmousedown = () => (mouseDown = true)
 document.body.onmouseup = () => (mouseDown = false)
 
 
-const defaultColor = 'background-color:#333333;'
-const eraser = 'background-color:#f5f2f0'
+let currentColor = '#333333;'
+const eraser = '#f5f2f0'
+
+
+const colorPicker = document.getElementById('colorpicker')
+function setNewColor(color) {currentColor = color}
+colorPicker.oninput = (e) => setNewColor(e.target.value)
 
 
 const brushBtn = document.getElementById('brush')
@@ -73,9 +80,9 @@ eraserBtn.addEventListener('click', () => {eraserMode = true})
 function changeColor(e) {
 if (e.type === 'mouseover' && !mouseDown) return
 else if (eraserMode == true) {
-    e.target.style.cssText += `${eraser}`
+    e.target.style.cssText += `background-color:${eraser};`
 }else {
-    e.target.style.cssText += `${defaultColor}`
+    e.target.style.cssText += `background-color:${currentColor};`
 }}
 
 

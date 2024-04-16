@@ -90,6 +90,7 @@ footer {
     display: flex;
     flex-direction: column;
     text-align: center;
+    align-items: center;
     background-color: #d3d3d379;
     border-radius: 20px;
     margin: 20px;
@@ -107,7 +108,25 @@ footer {
     font-size: 20px;
     border-radius: 6px;
     border: none;
-    padding: 4px;
+    padding: 6px;
     opacity: 0.7;
     cursor: pointer;
+    width: 240px;
+    height: 40px;
+    transition: 0.2s;
+  }
+
+  #colorpicker {
+    width: 180px;
+    height: 80px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    opacity: 0.8;
+    background-color: rgba(0, 0, 0, 0);
+  }
+
+  #colorpicker:hover {
+    opacity: 1;
+    transition: 0.2s;
   }
