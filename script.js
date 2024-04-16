@@ -57,11 +57,28 @@ let mouseDown = false
 document.body.onmousedown = () => (mouseDown = true)
 document.body.onmouseup = () => (mouseDown = false)
 
+
+const defaultColor = 'background-color:#333333;'
+const eraser = 'background-color:#f5f2f0'
+
+
+const brushBtn = document.getElementById('brush')
+brushBtn.addEventListener('click', () => {eraserMode = false})
+
+const eraserBtn = document.getElementById('eraser')
+let eraserMode = false
+eraserBtn.addEventListener('click', () => {eraserMode = true})
+
+
 function changeColor(e) {
 if (e.type === 'mouseover' && !mouseDown) return
-else {
-        e.target.style.cssText += 'background-color:#333333;'
+else if (eraserMode == true) {
+    e.target.style.cssText += `${eraser}`
+}else {
+    e.target.style.cssText += `${defaultColor}`
 }}
+
+
 
 clearBtn.addEventListener('click', () => {remakeGrid()})
 

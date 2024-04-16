@@ -87,10 +87,14 @@ footer {
   }
 
   .interactiveBlock {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
     background-color: #d3d3d379;
     border-radius: 20px;
     margin: 20px;
     padding: 20px;
+    gap: 28px;
   }
 
   .container {
